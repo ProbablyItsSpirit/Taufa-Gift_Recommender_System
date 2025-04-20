@@ -11,42 +11,46 @@ export interface GiftRecommendation {
   description: string
   features: string[]
   details: Record<string, string>
-  link?: string
+  productUrl: string // Add this new field
 }
 
 export const giftRecommendations: GiftRecommendation[] = [
   {
-    id: "photography-cousin",
-    query: "Recommend a thoughtful gift for my 22-year-old cousin who loves photography under ₹2000",
-    title: "Instax Mini Photo Album with Personalized Cover",
-    price: "₹1,899",
-    originalPrice: "₹2,499",
-    discount: "24%",
-    image: "/placeholder.svg?height=400&width=400",
+    id: "toy-car",
+    query: "Recommend me a Toy Car",
+    title: "Remote Control Racing Car with Drift Function",
+    price: "₹1,299",
+    originalPrice: "₹1,999",
+    discount: "35%",
+    image: "/images/gifts/toy-car.png",
     description:
-      "A beautiful photo album designed specifically for Instax Mini prints with a personalized cover. Perfect for photography enthusiasts to display their favorite shots.",
+      "High-speed remote control racing car with drift function, perfect for both indoor and outdoor play. Features realistic design, LED lights, and responsive controls for an exciting racing experience.",
     features: [
-      "Holds 120 Instax Mini photos",
-      "Personalized cover with name or message",
-      "Premium leather-like material",
-      "Acid-free pages to preserve photos",
+      "2.4GHz remote control with 50m range",
+      "Rechargeable battery with 30 minutes playtime",
+      "Drift function for exciting stunts",
+      "LED headlights and taillights",
+      "Shock-resistant design for durability",
     ],
     details: {
-      Material: "Faux leather, acid-free paper",
-      Dimensions: "15 x 12 x 3 cm",
-      "Color options": "Black, Brown, Navy Blue",
-      Customization: "Name or short message",
+      "Age recommendation": "6+ years",
+      Battery: "Rechargeable 3.7V 500mAh Li-ion",
+      "Charging time": "60-90 minutes",
+      "Remote control": "2.4GHz with 50m range",
+      Speed: "Up to 15 km/h",
+      Material: "High-quality ABS plastic",
+      Dimensions: "25 × 12 × 8 cm",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Kidology-Drift-Remote-Control-Car/dp/B0DKX7H58H/ref=sr_1_5?crid=1L6WRFC782QXL&dib=eyJ2IjoiMSJ9.NfZy9ezoGHwT7cPmB_PeyhUS8lN1aDgwXsRlVm4dWcFRD4zzU8Oro_Dd-8w3s81dpjHrnEn_iU6EUsOVh9cBWpIyGEN65qOVjCZef8-JoeN9R56g6fmB-FsALZZb2Ubxjl-v0XhQlaLgQ90jtxTRLWAVhXPz94JuujVwxib4_6qaN8-x9XASdD7OBr-TsEkPa0LC-gp8zOqDpMZ0A7A1-IyJlInJtGpD1erm_ckQ8SdnKxnggPTdE45gpJWCZCw96WtjDhUvHU3Iq43Ag3QmLHERMyeAQNblgOcnDgBWmz0.0FQPJZk9eZsKS7bN90QNdsdJc25cH7gBr8SlyhG3qqs&dib_tag=se&keywords=remote+control+racing+car+with+drift+function&qid=1745134495&sprefix=emote+control+racing+car+with+drift+function,aps,226&sr=8-5&th=1",
   },
   {
     id: "photography-cousin",
     query: "Recommend a thoughtful gift for my 22-year-old cousin who loves photography under ₹2000",
     title: "Instax Mini Photo Album with Personalized Cover",
-    price: "₹1,899",
-    originalPrice: "₹2,499",
+    price: "₹999",
+    originalPrice: "₹1,999",
     discount: "24%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/photography-cousin.png",
     description:
       "A beautiful photo album designed specifically for Instax Mini prints with a personalized cover. Perfect for photography enthusiasts to display their favorite shots.",
     features: [
@@ -61,16 +65,16 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Color options": "Black, Brown, Navy Blue",
       Customization: "Name or short message",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/FotoCart-Pockets-Leather-Fujifilm-Polaroid/dp/B0B8CSX6PG/ref=sr_1_4?crid=3BPE3QBX7UJ99&dib=eyJ2IjoiMSJ9.D8Az7tDDDAVNR9aXwrE_fUKnt_nAR4F_elmTqKSiqaXzWLaq812_iOs5YQPbMm8oSZUmAxIr7zgJO7ZeIjhGvsGtmOewSU5yzhTKRjOjkMR4ldLhMHNLmaT4rEX8cpHZVAwNI6JLdT44k_v7C3QLYSjcPjdIVpH-WQIAS0j05AybdJY6G5qBEBqUDh56LADTs-k4OeJvB6NILrQqG42-2bfMJTbx5L9_4xfIdLmxsx0.oRG0tL6ubci4bpmla5n0ajC1WSWlefqHwHZ6bJhucX0&dib_tag=se&keywords=Instax+Mini+Photo+Album+with+Personalized+Cover&qid=1745135199&sprefix=instax+mini+photo+album+with+personalized+cover,aps,451&sr=8-4",
   },
   {
     id: "skincare-sister",
     query: "I want to buy a skincare gift set for my 30-year-old sister-in-law, within ₹1500",
-    title: "Forest Essentials Mini Facial Care Set",
+    title: "Lotus Herbal Mini Facial Care Set",
     price: "₹1,450",
     originalPrice: "₹1,800",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/skincare-sister.png",
     description: "A luxurious Ayurvedic skincare set with natural ingredients perfect for daily facial care routine.",
     features: [
       "100% natural ingredients",
@@ -84,16 +88,16 @@ export const giftRecommendations: GiftRecommendation[] = [
       Ingredients: "Natural botanical extracts, essential oils",
       "Made in": "India",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Lotus-Herbals-Radiant-Facial-Revitalising/dp/B00OWREG7K/ref=sr_1_4_sspa?crid=3R06ZXA90IJ0E&dib=eyJ2IjoiMSJ9.b5ihRpoc28g98Abeg2dBI4p7ormn-QrBZFcj_ppZSVL0RzyOW9ErXS99CXBMWDUl5Zd1TSWQomsum7ASoQqHSfdJZH3TfRuhWVRR5IE2EEEeFweLBCoSibfj3UtMKITDaXJnpHto1lLLqE56OHMI0cyw_9Tft626PKWtLFVPAMnFShTcPXM6264-nVp3_cu1FQIVB9CWW-Lc5Hmsl7BMlbxVM7-z64ZthHEqHN25P2DEd4Kcqti7XWo_Kjskbot25lJS5HjWAattiNMJlUiQwZUGknBxFzcRSAJWdYz7ZTc._DrZZNs1acQw0O8osFpOEsBnP8kJltzkcCMMpVGuZj8&dib_tag=se&keywords=mini+facial+care+set&qid=1745135316&sprefix=mini+facial+care+set,aps,328&sr=8-4-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1",
   },
   {
     id: "gardening-dad",
     query: "Suggest a fun gift for my dad who loves gardening, budget ₹1200",
     title: "Indoor Herb Garden Starter Kit",
-    price: "₹1,150",
-    originalPrice: "₹1,400",
+    price: "₹9,150",
+    originalPrice: "₹10,400",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/gardening-dad.png",
     description: "Everything needed to grow fresh herbs at home with minimal effort. Perfect for garden enthusiasts.",
     features: [
       "5 types of herb seeds included",
@@ -107,7 +111,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Material: "Recycled plastic",
       Dimensions: "30 x 12 x 10 cm",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Indoor-Herb-Garden-Starter-Kit/dp/B06ZY8JGJ4/ref=sr_1_5?crid=186G8SWSJHEHL&dib=eyJ2IjoiMSJ9.R0rBpI4d67o6bQooZI8rR5B4fiodEo18Khtd-WH5qiM38t6ZOUaY8NMBRxTLf7HlD9U-LMtSo5SClt1ypl6Uhs2mvQd6izBQL444Oi6IE46DLbFRQPd9bWvWR7ufqFOAlTE9W2bLgyYYE-9QqhU6dc4HjtNJkmgVqNKe3I489n_T6R_Xq0ljIkC-ItJSr65oz47j0VmGex3K-78OW91y6gIoZtIOx4O4XJinU8RNMKl6SsbAiMwJtKBRh2T_6wn3OSamcAPPwplNzWQH6LADtk84cNRiGzlXxe_hHoBE0l0.B2UfeLliAVrnCXNy0EJdDDUZIezO6GasgAjkhoS7yg4&dib_tag=se&keywords=indoor+herb+garden+starter+kit&qid=1745135387&sprefix=indoor+herb+garden+starter+k,aps,247&sr=8-5",
   },
   {
     id: "anime-girl",
@@ -116,7 +120,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹950",
     originalPrice: "₹1,200",
     discount: "21%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/anime-girl.png",
     description: "High-quality collectible figurines of popular anime characters. Perfect for anime enthusiasts.",
     features: [
       "Set of 3 mini figurines",
@@ -130,7 +134,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Characters: "From popular anime series",
       Packaging: "Gift box included",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/YOURKARTS-COM-Character-Figurine-Jujitsu-Outfit/dp/B0F4NK3ZP2/ref=sr_1_1_sspa?crid=17M7IR93SX1OV&dib=eyJ2IjoiMSJ9.h8Y5JOY0UGxkq2ddjfYtNiE0JploQBFCkQ4HBUIjS9W1J-oIApM5za_JVa66aeeK4-KTzOkr5MfjP6YNFHGTMLQUVO0yh9p8LoJF2bSgId2XfVjlPjpT8ChJ4DTpZVWj-O1ANGxOsjYbpmvV-hGqmhzSncf1zZUgGdslmPAlLyoNButd2nw8mp5s4PrXwMZvfYnMUona-zJUAAyFQSCKOE5rK-_pqUjoz2efxtGhvpCekzZvvwEv7lQT9F_a47vMLGB_40gZqKfDYVKjSJb4GHnaqf8L12fy_UBgM7-mSBY.pI98Wg6k5zLCzpEGelz04GtQa9uiLe-3nlTRPAFPc7o&dib_tag=se&keywords=Anime+Character+Figurine+Collection&qid=1745135448&sprefix=anime+character+figurine+collection,aps,217&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
   },
   {
     id: "travel-friend",
@@ -139,7 +143,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,750",
     originalPrice: "₹2,200",
     discount: "20%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/travel-friend.png",
     description:
       "A versatile, water-resistant backpack with multiple compartments designed specifically for travelers.",
     features: ["Anti-theft design", "USB charging port", "Water-resistant material", "Multiple hidden compartments"],
@@ -149,16 +153,16 @@ export const giftRecommendations: GiftRecommendation[] = [
       Dimensions: "45 x 30 x 15 cm",
       Weight: "0.8 kg",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Mokobara-Packing-Resistant-Organizer-Homegrown/dp/B0C466X3CL/ref=sr_1_1_sspa?crid=14YX2DCDFADPJ&dib=eyJ2IjoiMSJ9.AGINM9qLtVYZuc7cTzNEgTq4Tc89s1blm4xtKqhNYg4xdxFcV_ZueEeeCxeg6w7zFMfox0yMoXtc2FjBDNHxHr2FPLIsHSmRh-aOZD2XsWHsTd4TyHNuP41ngWGH3B8J8zxXnEYRplk5prd1Gds80PkR9CbZ2cuiMIyFGdrQS0FxgRy2QDR2ouLkz7rQ1FHLTFfOalK4so5GuAzWnRzCV1bnFkF2CFYY2X6-E7VdKvw._Xcg3mwlNNFYAzsdAw_Ndu9qX7ZO7yyDpJWGy6LoPY4&dib_tag=se&keywords=compact+travel+organizer+backpack&qid=1745135522&sprefix=ompact+travel+organizer+backpack,aps,226&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
   },
   {
     id: "tech-man",
     query: "Suggest something classy for a 28-year-old man who likes tech gadgets, under ₹2500",
-    title: "GIVA 925 Silver Turquoise Blue Tear Drop Earrings",
-    price: "₹2,450",
-    originalPrice: "₹3,000",
+    title: "Boult Dire Smartwatch: 1.38'' 2.5D Curved HD Display, BT Calling, 500 Nits Brightness, IP67, 250+ Watchfaces, 120+ Sports Modes, AI Voice Assistant, SpO2 Monitoring (Jet Black)",
+    price: "₹2,399",
+    originalPrice: "₹6,999",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/tech-man.png",
     description:
       "A sleek, modern smartwatch with multiple features and a classic design that works for both casual and formal settings.",
     features: ["Heart rate monitoring", "Sleep tracking", "Notification alerts", "Water-resistant design"],
@@ -168,7 +172,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Compatibility: "iOS and Android",
       "Water resistance": "IP68 rated",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Boult-Bluetooth-Brightness-Assistant-Monitoring/dp/B0DM5QYVNS/ref=sr_1_6?crid=1Z7NZQNSHQ12S&dib=eyJ2IjoiMSJ9.K6KUrnzw9jiYCOcYD9bI9jF77U0VTj1324toeyfmxSzm4joNVsKNx3U7HL-0KBsFGZ7ygUBkqftg9VdeKrQpySJgGENmtc5hKnwl_A61JCIGLmdIDWUT5YXDxbuFXETrk1H6lfKbQ4uWxIbw56tAx3U5bO3W4-cbBpMkzvihvHIdZrhtvTVhAMXZcT5E-lTFt-8qUlHqa_CDAHFZzn7wMl3zVF_jOv4VMVuh7zGqe80.8dzMz9mJmyr9SNCtJytTTrBU-F1F9tkr1dAkDHZtQms&dib_tag=se&keywords=Bolt+Watch&nsdOptOutParam=true&qid=1745135585&sprefix=bolt+wat,aps,253&sr=8-6&th=1",
   },
   {
     id: "cooking-aunt",
@@ -177,7 +181,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,450",
     originalPrice: "₹1,800",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/cooking-aunt.png",
     description: "A beautifully crafted wooden spice box with 12 essential Indian spices in airtight containers.",
     features: [
       "Handcrafted wooden box",
@@ -191,7 +195,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Spices included": "12 essential Indian spices",
       Storage: "Airtight containers with labels",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Premium-Handcrafted-Crafted-9-Compartment-Containers/dp/B0CPM3MD6Y/ref=sr_1_2_sspa?crid=1G43W2VRZ0Q3L&dib=eyJ2IjoiMSJ9.ujbTVKtvPwBUt84kkyXG_OMTh2syo4ucdOsK5pJBRSV6cfihUoocq9nCB6eqJg5Swyo1wAKL6nzz7JDYqNWTM5gndCgdxbhWuo3Z9Vvyab7601H_3DrA7QP7x9EaQGcAKxq5fcjpwLXeg7NYVMHVz39nTOLpJ5UvA8NKgcH8H_ZwV5B6tMzw9Pcp15_BuozCpx1PfmmTyACaNcRFdgRWGBPRV3YXxphl62o9WCQZA8B14jC5lpKagPlEl3A9tfcX62l8aWyPsWP9Zj2QnO6duiqD12_t7MP7Q1ZnvnCM4N0.GEddCNlhJhfTT91sl_h3KH_JvakV_4RpK5FT57oss7k&dib_tag=se&keywords=Premium+Spice+Box+Gift+Set&qid=1745135810&sprefix=premium+spice+box+gift+set,aps,259&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1",
   },
   {
     id: "crochet-mom",
@@ -200,7 +204,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹950",
     originalPrice: "₹1,200",
     discount: "21%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/crochet-mom.png",
     description:
       "A complete set of ergonomic crochet hooks with a beautiful carrying case, perfect for crochet enthusiasts.",
     features: [
@@ -215,16 +219,16 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Case material": "Canvas with leather trim",
       Accessories: "Includes stitch markers and measuring tape",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/crochet-hook-set",
   },
   {
     id: "guitar-guy",
     query: "Gift ideas for a 20-year-old guy who plays guitar, budget ₹1700",
-    title: "Guitar Accessory Premium Kit",
-    price: "₹1,650",
-    originalPrice: "₹2,000",
-    discount: "17%",
-    image: "/placeholder.svg?height=400&width=400",
+    title: "Guitar Accessories Kit, Acoustic Guitar Changing Full Set Tool Kit, Including Guitar Strings, Guitar Tuner, Winder Guitar Capo for Acoustic Guitar for Guitar Players Beginners",
+    price: "₹799",
+    originalPrice: "₹1,999",
+    discount: "60%",
+    image: "/images/gifts/guitar-guy.png",
     description: "A comprehensive kit with everything a guitarist needs, from tuners to picks to maintenance tools.",
     features: ["Digital chromatic tuner", "Premium guitar strap", "Variety of picks", "Guitar maintenance tools"],
     details: {
@@ -233,7 +237,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Pick variety": "Different thicknesses for various styles",
       Compatibility: "Works with acoustic and electric guitars",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/Imaginea%C2%AE-Accessories-Acoustic-Including-Beginners/dp/B0C16MWSGM/ref=sr_1_9?crid=18MLJR4JV1L6N&dib=eyJ2IjoiMSJ9.oXVl8HA2cuuZRuSuBBNb8xjLbli2KZLiMEb0AwE124s9T5vPp-9SXIte8RnOgx_DLJC1bDmhxKL6wOKxc5vkJ2m2mA_QacJu-dLPFk52x27TX0qM8CT4QeHAE_ZHaruN1Vnql8HKAVjo7-gidoYWB9z0EfUpAzF8u_gHMNsn78SsfCdV6e8g23nIudngXQ_CHNM4_a8-BGEckKfjXFC2mh_M91jHVjMhzlOrjeaalBGlXLPxnQwKfxgjp-ZedVosbMNzJhnj7yPGQRlXtxxq2fB-yTU7JZY8EB6ei2Rkgn8.3LUVOcZRNzvwYwx362tip0z1yvnSOspvlZYiK0ieuP0&dib_tag=se&keywords=Guitar+Accessory+Premium+Kit&qid=1745135912&sprefix=guitar+accessory+premium+kit,aps,240&sr=8-9",
   },
   {
     id: "cozy-girlfriend",
@@ -242,7 +246,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,950",
     originalPrice: "₹2,400",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/cozy-girlfriend.png",
     description: "A thoughtfully curated gift hamper with cozy items perfect for relaxation and self-care.",
     features: ["Soft throw blanket", "Scented candle", "Personalized mug", "Gourmet hot chocolate"],
     details: {
@@ -251,7 +255,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Mug: "Ceramic with custom name",
       Packaging: "Premium gift box with ribbon",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/cozy-gift-hamper",
   },
   {
     id: "skincare-wellness-aunt",
@@ -260,7 +264,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹2,250",
     originalPrice: "₹2,800",
     discount: "20%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/skincare-wellness-aunt.png",
     description: "An elegant essential oil diffuser with a set of premium essential oils for relaxation and wellness.",
     features: [
       "Ceramic diffuser with LED lights",
@@ -274,7 +278,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Coverage area": "Up to 300 sq ft",
       "Timer settings": "1h, 3h, 6h, continuous",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/aromatherapy-diffuser-set",
   },
   {
     id: "memes-quirky",
@@ -283,7 +287,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹750",
     originalPrice: "₹950",
     discount: "21%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/memes-quirky.png",
     description: "A fun collection of desk accessories featuring popular meme references and quirky designs.",
     features: ["Meme-themed sticky notes", "Funny desk calendar", "Quirky pen holder", "Humorous coasters"],
     details: {
@@ -292,7 +296,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Theme: "Internet meme culture",
       Packaging: "Gift box included",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/meme-desk-accessories",
   },
   {
     id: "spiritual-grandmother",
@@ -301,7 +305,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,150",
     originalPrice: "₹1,400",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/spiritual-grandmother.png",
     description: "A thoughtful spiritual gift set with items for meditation, prayer, and peaceful reflection.",
     features: ["Handcrafted prayer beads", "Brass singing bowl", "Scented meditation candles", "Inspirational book"],
     details: {
@@ -310,7 +314,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Singing bowl": "4-inch diameter brass bowl with striker",
       Book: "Daily reflections and prayers",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/meditation-prayer-gift-set",
   },
   {
     id: "self-care-working-woman",
@@ -319,7 +323,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,750",
     originalPrice: "₹2,200",
     discount: "20%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/self-care-working-woman.png",
     description: "A premium self-care gift box designed to help busy working women relax and rejuvenate.",
     features: ["Bath bombs and salts", "Face mask set", "Scented candle", "Relaxation tea blend"],
     details: {
@@ -328,7 +332,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Candle: "Soy wax with cotton wick",
       Packaging: "Eco-friendly gift box",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/self-care-pamper-box",
   },
   {
     id: "history-uncle",
@@ -337,7 +341,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹2,450",
     originalPrice: "₹3,000",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/history-uncle.png",
     description:
       "A beautifully detailed vintage-style world map with a personalized brass plaque, perfect for history enthusiasts.",
     features: ["High-quality canvas print", "Antique-style design", "Personalized brass plaque", "Ready to hang"],
@@ -347,7 +351,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Personalization: "Custom message on brass plaque",
       Style: "Vintage explorer map with antiqued finish",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/vintage-world-map",
   },
   {
     id: "home-decor-bhabhi",
@@ -356,7 +360,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,450",
     originalPrice: "₹1,800",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/home-decor-bhabhi.png",
     description: "A set of three beautifully handcrafted ceramic vases in complementary colors and designs.",
     features: [
       "Set of 3 different sized vases",
@@ -370,7 +374,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Colors: "Complementary pastel shades",
       Origin: "Artisan-made in Jaipur",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/ceramic-vase-set",
   },
   {
     id: "gym-fitness",
@@ -379,7 +383,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹2,450",
     originalPrice: "₹3,000",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/gym-fitness.png",
     description: "A comprehensive fitness tracking bundle with smart features to monitor workouts and health metrics.",
     features: ["Smart fitness band", "Bluetooth earbuds", "Microfiber towel", "Stainless steel water bottle"],
     details: {
@@ -388,7 +392,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Water bottle": "500ml, vacuum insulated",
       Compatibility: "iOS and Android",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/smart-fitness-tracker",
   },
   {
     id: "book-lover-aunt",
@@ -397,7 +401,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹850",
     originalPrice: "₹1,100",
     discount: "23%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/book-lover-aunt.png",
     description: "A thoughtfully curated gift set for book lovers with everything needed for cozy reading sessions.",
     features: ["Handcrafted bookmark set", "Book-scented candle", "Reading light", "Literary-themed mug"],
     details: {
@@ -406,7 +410,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Reading light": "Clip-on, adjustable brightness",
       Mug: "Literary quotes design, 350ml",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/bookworm-gift-set",
   },
   {
     id: "fragrance-wife",
@@ -415,7 +419,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹2,450",
     originalPrice: "₹3,000",
     discount: "18%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/fragrance-wife.png",
     description:
       "A luxurious collection of premium fragrances in an elegant gift box, perfect for fragrance enthusiasts.",
     features: [
@@ -430,7 +434,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Bath bombs": "Set of 3 coordinating scents",
       Packaging: "Luxury gift box with satin lining",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/perfume-gift-collection",
   },
   {
     id: "college-student",
@@ -439,7 +443,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹950",
     originalPrice: "₹1,200",
     discount: "21%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/college-student.png",
     description: "A space-saving desk organizer with built-in wireless charging pad, perfect for college students.",
     features: ["Wireless charging pad", "Multiple compartments", "Phone/tablet stand", "USB port"],
     details: {
@@ -448,7 +452,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Compatibility: "All Qi-enabled devices",
       Dimensions: "25 x 15 x 12 cm",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/desk-organizer-wireless-charger",
   },
   {
     id: "journaling-stationery",
@@ -457,7 +461,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹650",
     originalPrice: "₹850",
     discount: "24%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/journaling-stationery.png",
     description: "A beautiful journaling kit with premium stationery items for creative expression.",
     features: ["Hardcover dotted journal", "Set of fine-tip pens", "Decorative washi tapes", "Sticker collection"],
     details: {
@@ -466,7 +470,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Washi tapes": "5 decorative designs",
       Stickers: "200+ decorative stickers",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/premium-journaling-kit",
   },
   {
     id: "classy-cousin",
@@ -475,7 +479,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,950",
     originalPrice: "₹2,400",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/classy-cousin.png",
     description: "A sophisticated desk set with personalized pen, perfect for a new professional.",
     features: ["Personalized metal pen", "Business card holder", "Desk organizer", "Leather-bound notebook"],
     details: {
@@ -484,7 +488,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Notebook: "A5 size, lined pages",
       Packaging: "Gift box included",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/executive-desk-set",
   },
   {
     id: "practical-mom",
@@ -493,7 +497,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,250",
     originalPrice: "₹1,600",
     discount: "22%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/practical-mom.png",
     description: "A set of time-saving kitchen gadgets designed to make cooking easier for busy parents.",
     features: [
       "3-in-1 avocado tool",
@@ -507,7 +511,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Food savers": "Set of 6 different sizes",
       Packaging: "Gift box with usage guide",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/kitchen-gadget-set",
   },
   {
     id: "relaxing-maasi",
@@ -516,7 +520,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹1,450",
     originalPrice: "₹1,800",
     discount: "19%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/relaxing-maasi.png",
     description: "A thoughtful hamper with relaxing teas and sweet treats for peaceful moments.",
     features: [
       "Assorted herbal tea collection",
@@ -530,7 +534,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Cookies: "Assorted handmade shortbread cookies",
       Mug: "Handcrafted ceramic, 300ml",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/relaxation-tea-hamper",
   },
   {
     id: "fashionista-accessory",
@@ -539,7 +543,7 @@ export const giftRecommendations: GiftRecommendation[] = [
     price: "₹950",
     originalPrice: "₹1,200",
     discount: "21%",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/gifts/fashionista-accessory.png",
     description:
       "Elegant tear drop earrings made with 925 silver and turquoise blue stones, perfect for fashion enthusiasts.",
     features: ["925 Sterling Silver", "Turquoise blue gemstones", "Rhodium plated for durability", "Hypoallergenic"],
@@ -549,7 +553,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Gem type": "Zircon",
       "Country of Origin": "India",
     },
-    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+    productUrl: "https://www.amazon.in/silver-turquoise-earrings",
   },
 ]
 

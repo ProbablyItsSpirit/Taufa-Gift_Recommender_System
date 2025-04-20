@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import type { User } from "firebase/auth"
-import { auth, signInWithGoogle, signInWithEmail, signUpWithEmail, signOutUser } from "@/lib/firebase"
+import { signInWithGoogle, signInWithEmail, signUpWithEmail, signOutUser } from "@/lib/firebase"
 import { useToast } from "@/components/ui/use-toast"
 
 interface AuthContextType {
@@ -22,12 +22,41 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast()
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user)
-      setLoading(false)
-    })
+    // We'll handle auth state changes in a client-side only effect
+    let unsubscribe: (() => void) | null = null
 
-    return unsubscribe
+    const setupAuth = async () => {
+      try {
+        // Dynamically import Firebase auth to ensure it only runs on client
+        const { getAuth } = await import("firebase/auth")
+        const { firebaseConfig } = await import("@/lib/firebase-config")
+        const { initializeApp } = await import("firebase/app")
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig)
+        const auth = getAuth(app)
+
+        // Set up auth state listener
+        unsubscribe = auth.onAuthStateChanged((user) => {
+          setCurrentUser(user)
+          setLoading(false)
+        })
+      } catch (error) {
+        console.error("Error setting up auth:", error)
+        setLoading(false)
+      }
+    }
+
+    // Only run in browser environment
+    if (typeof window !== "undefined") {
+      setupAuth()
+    } else {
+      setLoading(false)
+    }
+
+    return () => {
+      if (unsubscribe) unsubscribe()
+    }
   }, [])
 
   const signIn = async (email: string, password: string) => {

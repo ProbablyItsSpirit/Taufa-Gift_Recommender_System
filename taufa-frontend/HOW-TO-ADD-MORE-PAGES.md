@@ -29,13 +29,16 @@ This guide explains how to add more gift recommendation pages to the Taufa appli
     "Detail Label 2": "Detail Value 2",
     "Detail Label 3": "Detail Value 3",
     "Detail Label 4": "Detail Value 4"
-  }
+  },
+  productUrl: "https://www.example.com/product-page" // Add the actual product URL here
 }
 \`\`\`
 
 3. Make sure the `query` field exactly matches the text that will be entered or selected in the personalization page.
 
 4. The `id` field will be used in the URL for the recommendation page (e.g., `/recommended/unique-id-for-the-gift`).
+
+5. The `productUrl` field should contain the full URL to the actual product page on an e-commerce website.
 
 ## Adding the Query to the Example Suggestions
 

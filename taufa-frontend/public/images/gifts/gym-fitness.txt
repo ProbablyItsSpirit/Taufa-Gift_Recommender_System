@@ -1,0 +1,3 @@
+# Fitness Gift Image
+Replace this file with the actual image for the Smart Fitness Tracker Bundle.
+Product ID: gym-fitness

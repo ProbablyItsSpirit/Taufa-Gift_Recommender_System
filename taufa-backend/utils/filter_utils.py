@@ -10,15 +10,7 @@ def load_dataset(csv_url: str) -> pd.DataFrame:
         print(f"Error loading dataset: {e}")
         return pd.DataFrame()
 
-def parse_query(user_query: str):
-    # Extract price if mentioned
-    price_match = re.search(r'under\s?(\d+)', user_query.lower())
-    max_price = float(price_match.group(1)) if price_match else None
-
-    # Remove price part from the query
-    cleaned_query = re.sub(r'under\s?\d+\s?(php|rs|inr)?', '', user_query, flags=re.IGNORECASE).strip()
-
-    return cleaned_query, max_price
+dc
 def filter_products(df: pd.DataFrame, user_query: str = "", min_price: float = None, max_price: float = None) -> pd.DataFrame:
     df_filtered = df.copy()
 

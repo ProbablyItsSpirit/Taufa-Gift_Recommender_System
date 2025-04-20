@@ -74,6 +74,7 @@ export function Navbar() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
 
+            {/* Updated to always link to personalization page */}
             <Link href="/personalisation" className="hidden md:block">
               <Button className="bg-gradient-to-r from-[#8f89ff] to-[#635bff] hover:from-[#7b76ff] hover:to-[#5147fc] rounded-full">
                 Start now
@@ -145,6 +146,7 @@ export function Navbar() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
 
+            {/* Updated mobile menu button to link to personalization */}
             <Link href="/personalisation" className="block mt-4">
               <Button className="w-full bg-gradient-to-r from-[#8f89ff] to-[#635bff] hover:from-[#7b76ff] hover:to-[#5147fc] rounded-full">
                 Start now

@@ -71,12 +71,23 @@ export default function RecommendedPage() {
                 </div>
               </CardContent>
               <CardFooter className="p-4 pt-0">
-                <Link href={`/recommended/${gift.id}`} className="w-full">
-                  <Button className="w-full bg-[#635bff] hover:bg-[#5147fc]">
-                    View Details
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
+                <div className="grid grid-cols-1 gap-2 w-full">
+                  <Link href={`/recommended/${gift.id}`} className="w-full">
+                    <Button className="w-full bg-[#635bff] hover:bg-[#5147fc]">
+                      View Details
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+
+                  {gift.productUrl && (
+                    <a href={gift.productUrl} target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button variant="outline" className="w-full">
+                        Shop Now
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </a>
+                  )}
+                </div>
               </CardFooter>
             </Card>
           ))}

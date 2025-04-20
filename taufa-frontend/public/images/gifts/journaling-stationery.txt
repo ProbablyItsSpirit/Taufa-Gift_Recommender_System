@@ -1,0 +1,3 @@
+# Journaling Gift Image
+Replace this file with the actual image for the Premium Journaling Kit.
+Product ID: journaling-stationery

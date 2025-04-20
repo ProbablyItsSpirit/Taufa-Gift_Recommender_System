@@ -113,27 +113,6 @@ export default function RecommendedGiftPage() {
               ))}
             </div>
 
-            <div className="mt-6">
-              <h2 className="text-lg font-semibold">Details:</h2>
-              <ul className="mt-2 space-y-1">
-                {Object.entries(gift.details).map(([key, value]) => (
-                  <li key={key}>
-                    <strong>{key}:</strong> {value}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-6">
-              <a
-                href={gift.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                Buy this gift
-              </a>
-            </div>
-
             <div className="price-container flex items-center gap-4 my-6">
               <span className="text-3xl font-bold">{gift.price}</span>
               {gift.originalPrice && <span className="text-xl text-gray-500 line-through">{gift.originalPrice}</span>}
@@ -177,6 +156,16 @@ export default function RecommendedGiftPage() {
                 )}
               </Button>
             </div>
+
+            {/* External Product Link Button */}
+            {gift.productUrl && (
+              <a href={gift.productUrl} target="_blank" rel="noopener noreferrer" className="block mb-6">
+                <Button className="w-full bg-[#635bff] hover:bg-[#5147fc] py-6 text-base">
+                  Shop on Retailer Website
+                  <ChevronRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+            )}
 
             <div
               className="action-card flex items-center gap-4 p-6 bg-white rounded-xl shadow-sm mb-4 hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer"

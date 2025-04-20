@@ -12,11 +12,13 @@ import {
   Lightbulb,
   CheckCircle,
   Sparkles,
+  Search,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
 import { giftRecommendations } from "@/lib/gift-recommendations"
+import { Input } from "@/components/ui/input"
 
 // Example gift recommendation queries
 const EXAMPLE_QUERIES = [
@@ -53,7 +55,7 @@ export default function PersonalisationPage() {
   const [selectedBudget, setSelectedBudget] = useState("₹1000-₹5000")
   const [description, setDescription] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [showExamples, setShowExamples] = useState(false)
+  const [showExamples, setShowExamples] = useState(true) // Changed to true by default
   const [filteredExamples, setFilteredExamples] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -80,7 +82,6 @@ export default function PersonalisationPage() {
 
   const handleExampleClick = (example: string) => {
     setDescription(example)
-    setShowExamples(false)
     if (textareaRef.current) {
       textareaRef.current.focus()
     }
@@ -119,6 +120,7 @@ export default function PersonalisationPage() {
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-[#4ECDC4] animate-fade-in">
           <div className="flex flex-col md:flex-row">
+            {/* Left side - Form */}
             <div className="w-full md:w-1/2 p-8 md:p-10">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold mb-3">Tell us about them</h2>
@@ -204,41 +206,10 @@ export default function PersonalisationPage() {
                     className="block w-full px-4 py-3 text-gray-700 bg-white border border-gray-200 rounded-lg focus:border-[#635bff] focus:ring focus:ring-opacity-40 focus:ring-[#635bff] focus:outline-none"
                     rows={4}
                     placeholder="Describe their interests, hobbies, age, personality..."
-                    onClick={() => setShowExamples(true)}
                   />
                   <MessageSquare className="absolute right-3 bottom-3 w-5 h-5 text-gray-400" />
                 </div>
                 <p className="text-xs text-gray-500 mt-1">Be specific for better recommendations!</p>
-
-                {/* Example suggestions dropdown */}
-                {showExamples && (
-                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg animate-fade-in">
-                    <div className="p-2 border-b">
-                      <input
-                        type="text"
-                        placeholder="Search examples..."
-                        className="w-full p-2 border border-gray-200 rounded"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
-                    </div>
-                    <div className="max-h-60 overflow-y-auto p-2">
-                      {filteredExamples.length > 0 ? (
-                        filteredExamples.map((example, index) => (
-                          <div
-                            key={index}
-                            className="p-2 hover:bg-gray-100 rounded cursor-pointer text-sm"
-                            onClick={() => handleExampleClick(example)}
-                          >
-                            {example}
-                          </div>
-                        ))
-                      ) : (
-                        <div className="p-2 text-gray-500 text-sm">No examples match your search</div>
-                      )}
-                    </div>
-                  </div>
-                )}
               </div>
 
               <Button
@@ -260,25 +231,56 @@ export default function PersonalisationPage() {
               </Button>
             </div>
 
-            <div className="w-full md:w-1/2 bg-[#f9f9ff] p-8 flex items-center justify-center relative overflow-hidden">
+            {/* Right side - Example queries and illustration */}
+            <div className="w-full md:w-1/2 bg-[#f9f9ff] p-8 relative overflow-hidden">
               <div className="absolute -top-10 -left-10 w-20 h-20 bg-[rgba(255,209,102,0.2)] rounded-full"></div>
               <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-[rgba(78,205,196,0.2)] rounded-full"></div>
 
-              <div className="relative z-10">
-                <img
-                  src="/placeholder.svg?height=300&width=300"
-                  alt="Gift Personalization Illustration"
-                  className="max-w-sm mx-auto"
-                />
-                <div className="bg-white p-4 rounded-lg shadow-md absolute bottom-10 right-0 max-w-[240px] animate-fade-in">
-                  <div className="flex items-start gap-3">
-                    <div className="bg-[#635bff] rounded-full p-2 text-white">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-sm mb-1">Smart recommendations</h4>
-                      <p className="text-gray-500 text-xs">Our AI helps find perfect gifts based on your description</p>
-                    </div>
+              <div className="relative z-10 mb-6">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <Sparkles className="w-5 h-5 mr-2 text-[#635bff]" />
+                  Example Gift Queries
+                </h3>
+
+                <div className="relative mb-4">
+                  <Input
+                    type="text"
+                    placeholder="Search example queries..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10 w-full"
+                  />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                </div>
+
+                <div className="bg-white rounded-lg shadow-sm p-4 max-h-[400px] overflow-y-auto">
+                  {filteredExamples.length > 0 ? (
+                    filteredExamples.map((example, index) => (
+                      <div
+                        key={index}
+                        className="p-3 hover:bg-gray-100 rounded-lg cursor-pointer text-sm mb-2 border border-gray-100 transition-all duration-200 hover:border-[#635bff] hover:shadow-sm"
+                        onClick={() => handleExampleClick(example)}
+                      >
+                        {example}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="p-4 text-gray-500 text-center">No examples match your search</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg shadow-md mt-6 animate-fade-in">
+                <div className="flex items-start gap-3">
+                  <div className="bg-[#635bff] rounded-full p-2 text-white">
+                    <Lightbulb className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-sm mb-1">Pro Tip</h4>
+                    <p className="text-gray-500 text-xs">
+                      Click on any example query to automatically fill the description field. You can then modify it to
+                      better match your needs.
+                    </p>
                   </div>
                 </div>
               </div>

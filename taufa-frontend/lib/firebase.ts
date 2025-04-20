@@ -1,81 +1,95 @@
 "use client"
 
-import { initializeApp } from "firebase/app"
-import { getAnalytics } from "firebase/analytics"
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  type User,
-} from "firebase/auth"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
+import { firebaseConfig } from "./firebase-config"
+import type { User } from "firebase/auth"
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCKw289LBRIK5rn8dKDu6EPcrdOw313xrs",
-  authDomain: "taufa-f060b.firebaseapp.com",
-  projectId: "taufa-f060b",
-  storageBucket: "taufa-f060b.firebasestorage.app",
-  messagingSenderId: "615934410783",
-  appId: "1:615934410783:web:5b14121df6c1d72a01552a",
-  measurementId: "G-REHHGP8FER",
+// Initialize Firebase only on the client side
+let auth: any = null
+let app: any = null
+let googleProvider: any = null
+
+// Flag to track initialization
+let isInitialized = false
+
+// Initialize Firebase only in browser environment
+const initializeFirebase = async () => {
+  if (typeof window === "undefined") return null
+
+  if (!isInitialized) {
+    try {
+      const { initializeApp } = await import("firebase/app")
+      const { getAuth, GoogleAuthProvider } = await import("firebase/auth")
+
+      app = initializeApp(firebaseConfig)
+      auth = getAuth(app)
+      googleProvider = new GoogleAuthProvider()
+
+      isInitialized = true
+      console.log("Firebase initialized successfully")
+    } catch (error) {
+      console.error("Error initializing Firebase:", error)
+    }
+  }
+
+  return { auth, app, googleProvider }
 }
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-
-// Initialize Analytics - only in browser environment
-let analytics: any = null
-if (typeof window !== "undefined") {
-  analytics = getAnalytics(app)
-}
-
-// Initialize Firebase Authentication
-const auth = getAuth(app)
-const googleProvider = new GoogleAuthProvider()
 
 // Sign in with Google
 export const signInWithGoogle = async () => {
+  const firebase = await initializeFirebase()
+  if (!firebase) return null
+
   try {
-    const result = await signInWithPopup(auth, googleProvider)
+    const { signInWithPopup } = await import("firebase/auth")
+    const result = await signInWithPopup(firebase.auth, firebase.googleProvider)
     return result.user
   } catch (error) {
-    console.error("Error signing in with Google: ", error)
+    console.error("Error signing in with Google:", error)
     throw error
   }
 }
 
 // Sign up with email/password
 export const signUpWithEmail = async (email: string, password: string) => {
+  const firebase = await initializeFirebase()
+  if (!firebase) return null
+
   try {
-    const result = await createUserWithEmailAndPassword(auth, email, password)
+    const { createUserWithEmailAndPassword } = await import("firebase/auth")
+    const result = await createUserWithEmailAndPassword(firebase.auth, email, password)
     return result.user
   } catch (error) {
-    console.error("Error signing up with email: ", error)
+    console.error("Error signing up with email:", error)
     throw error
   }
 }
 
 // Sign in with email/password
 export const signInWithEmail = async (email: string, password: string) => {
+  const firebase = await initializeFirebase()
+  if (!firebase) return null
+
   try {
-    const result = await signInWithEmailAndPassword(auth, email, password)
+    const { signInWithEmailAndPassword } = await import("firebase/auth")
+    const result = await signInWithEmailAndPassword(firebase.auth, email, password)
     return result.user
   } catch (error) {
-    console.error("Error signing in with email: ", error)
+    console.error("Error signing in with email:", error)
     throw error
   }
 }
 
 // Sign out
 export const signOutUser = async () => {
+  const firebase = await initializeFirebase()
+  if (!firebase) return null
+
   try {
-    await signOut(auth)
+    const { signOut } = await import("firebase/auth")
+    await signOut(firebase.auth)
   } catch (error) {
-    console.error("Error signing out: ", error)
+    console.error("Error signing out:", error)
     throw error
   }
 }
@@ -86,15 +100,29 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user)
-      setLoading(false)
-    })
+    const initAuth = async () => {
+      const firebase = await initializeFirebase()
+      if (!firebase) {
+        setLoading(false)
+        return
+      }
 
-    return unsubscribe
+      const unsubscribe = firebase.auth.onAuthStateChanged((user: User | null) => {
+        setCurrentUser(user)
+        setLoading(false)
+      })
+
+      return unsubscribe
+    }
+
+    const unsubscribePromise = initAuth()
+
+    return () => {
+      unsubscribePromise.then((unsubscribe) => {
+        if (unsubscribe) unsubscribe()
+      })
+    }
   }, [])
 
   return { currentUser, loading }
 }
-
-export { auth, app, analytics }

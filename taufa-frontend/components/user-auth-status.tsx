@@ -4,9 +4,21 @@ import { useAuth } from "@/contexts/auth-context"
 import { Button } from "@/components/ui/button"
 import { LogOut, User } from "lucide-react"
 import Link from "next/link"
+import { useState, useEffect } from "react"
 
 export function UserAuthStatus() {
   const { currentUser, signOut, loading } = useAuth()
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only render after component has mounted on client
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Don't render anything during SSR
+  if (!isMounted) {
+    return <div className="h-9 w-9 rounded-full bg-gray-200 animate-pulse"></div>
+  }
 
   if (loading) {
     return <div className="h-9 w-9 rounded-full bg-gray-200 animate-pulse"></div>
