@@ -11,6 +11,7 @@ export interface GiftRecommendation {
   description: string
   features: string[]
   details: Record<string, string>
+  link?: string
 }
 
 export const giftRecommendations: GiftRecommendation[] = [
@@ -36,6 +37,31 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Color options": "Black, Brown, Navy Blue",
       Customization: "Name or short message",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
+  },
+  {
+    id: "photography-cousin",
+    query: "Recommend a thoughtful gift for my 22-year-old cousin who loves photography under ₹2000",
+    title: "Instax Mini Photo Album with Personalized Cover",
+    price: "₹1,899",
+    originalPrice: "₹2,499",
+    discount: "24%",
+    image: "/placeholder.svg?height=400&width=400",
+    description:
+      "A beautiful photo album designed specifically for Instax Mini prints with a personalized cover. Perfect for photography enthusiasts to display their favorite shots.",
+    features: [
+      "Holds 120 Instax Mini photos",
+      "Personalized cover with name or message",
+      "Premium leather-like material",
+      "Acid-free pages to preserve photos",
+    ],
+    details: {
+      Material: "Faux leather, acid-free paper",
+      Dimensions: "15 x 12 x 3 cm",
+      "Color options": "Black, Brown, Navy Blue",
+      Customization: "Name or short message",
+    },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "skincare-sister",
@@ -58,6 +84,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Ingredients: "Natural botanical extracts, essential oils",
       "Made in": "India",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "gardening-dad",
@@ -80,6 +107,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Material: "Recycled plastic",
       Dimensions: "30 x 12 x 10 cm",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "anime-girl",
@@ -102,6 +130,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Characters: "From popular anime series",
       Packaging: "Gift box included",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "travel-friend",
@@ -120,6 +149,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Dimensions: "45 x 30 x 15 cm",
       Weight: "0.8 kg",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "tech-man",
@@ -138,6 +168,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Compatibility: "iOS and Android",
       "Water resistance": "IP68 rated",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "cooking-aunt",
@@ -160,6 +191,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Spices included": "12 essential Indian spices",
       Storage: "Airtight containers with labels",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "crochet-mom",
@@ -183,6 +215,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Case material": "Canvas with leather trim",
       Accessories: "Includes stitch markers and measuring tape",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "guitar-guy",
@@ -200,6 +233,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Pick variety": "Different thicknesses for various styles",
       Compatibility: "Works with acoustic and electric guitars",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "cozy-girlfriend",
@@ -217,6 +251,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Mug: "Ceramic with custom name",
       Packaging: "Premium gift box with ribbon",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "skincare-wellness-aunt",
@@ -239,6 +274,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Coverage area": "Up to 300 sq ft",
       "Timer settings": "1h, 3h, 6h, continuous",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "memes-quirky",
@@ -256,6 +292,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Theme: "Internet meme culture",
       Packaging: "Gift box included",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "spiritual-grandmother",
@@ -273,6 +310,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Singing bowl": "4-inch diameter brass bowl with striker",
       Book: "Daily reflections and prayers",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "self-care-working-woman",
@@ -290,6 +328,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Candle: "Soy wax with cotton wick",
       Packaging: "Eco-friendly gift box",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "history-uncle",
@@ -308,6 +347,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Personalization: "Custom message on brass plaque",
       Style: "Vintage explorer map with antiqued finish",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "home-decor-bhabhi",
@@ -330,6 +370,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Colors: "Complementary pastel shades",
       Origin: "Artisan-made in Jaipur",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "gym-fitness",
@@ -347,6 +388,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Water bottle": "500ml, vacuum insulated",
       Compatibility: "iOS and Android",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "book-lover-aunt",
@@ -364,6 +406,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Reading light": "Clip-on, adjustable brightness",
       Mug: "Literary quotes design, 350ml",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "fragrance-wife",
@@ -387,6 +430,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Bath bombs": "Set of 3 coordinating scents",
       Packaging: "Luxury gift box with satin lining",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "college-student",
@@ -404,6 +448,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Compatibility: "All Qi-enabled devices",
       Dimensions: "25 x 15 x 12 cm",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "journaling-stationery",
@@ -421,6 +466,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Washi tapes": "5 decorative designs",
       Stickers: "200+ decorative stickers",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "classy-cousin",
@@ -438,6 +484,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Notebook: "A5 size, lined pages",
       Packaging: "Gift box included",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "practical-mom",
@@ -460,6 +507,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Food savers": "Set of 6 different sizes",
       Packaging: "Gift box with usage guide",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "relaxing-maasi",
@@ -482,6 +530,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       Cookies: "Assorted handmade shortbread cookies",
       Mug: "Handcrafted ceramic, 300ml",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
   {
     id: "fashionista-accessory",
@@ -500,6 +549,7 @@ export const giftRecommendations: GiftRecommendation[] = [
       "Gem type": "Zircon",
       "Country of Origin": "India",
     },
+    link: "https://www.amazon.in/dp/example-product-id", // Add the product link here
   },
 ]
 

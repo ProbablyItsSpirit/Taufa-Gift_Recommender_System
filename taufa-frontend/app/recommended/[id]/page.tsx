@@ -113,6 +113,27 @@ export default function RecommendedGiftPage() {
               ))}
             </div>
 
+            <div className="mt-6">
+              <h2 className="text-lg font-semibold">Details:</h2>
+              <ul className="mt-2 space-y-1">
+                {Object.entries(gift.details).map(([key, value]) => (
+                  <li key={key}>
+                    <strong>{key}:</strong> {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6">
+              <a
+                href={gift.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                Buy this gift
+              </a>
+            </div>
+
             <div className="price-container flex items-center gap-4 my-6">
               <span className="text-3xl font-bold">{gift.price}</span>
               {gift.originalPrice && <span className="text-xl text-gray-500 line-through">{gift.originalPrice}</span>}
