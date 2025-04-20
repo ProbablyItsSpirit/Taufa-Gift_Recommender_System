@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIVA 925 Silver Turquoise Blue Tear Drop Earrings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #635bff;
+            --primary-hover: #4f46e5;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: color 0.2s;
+        }
+
+        .icon-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Product Page Styles */
+        .breadcrumb {
+            padding: 1rem 0;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0 4rem;
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: var(--white);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid var(--border);
+            padding: 0.5rem;
+            background-color: var(--white);
+            transition: all 0.2s;
+        }
+
+        .thumbnail:hover {
+            border-color: var(--primary);
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .product-subtitle {
+            color: var(--primary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .product-details {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            padding: 0.75rem 0;
+        }
+
+        .detail-label {
+            width: 150px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .detail-value {
+            font-weight: 400;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .current-price {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .original-price {
+            font-size: 1.25rem;
+            text-decoration: line-through;
+            color: var(--text-light);
+        }
+
+        .discount {
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(99, 91, 255, 0.1);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .action-content {
+            flex: 1;
+        }
+
+        .action-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .action-description {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .action-button {
+            margin-left: auto;
+        }
+
+        /* Product features */
+        .features-section {
+            background-color: var(--white);
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--background);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(99, 91, 255, 0.1);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-description {
+            color: var(--text-light);
+        }
+
+        /* Zoom effect */
+        .zoom-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .main-image {
+                height: 350px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Pulse animation for save button */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 91, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(99, 91, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 91, 255, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i data-lucide="gift" class="w-6 h-6"></i>
+                    Taufa
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Personalisation</a></li>
+                    <li><a href="#">Gift Details</a></li>
+                    <li><a href="#">User Profile</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="icon-btn">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i data-lucide="heart" class="w-5 h-5"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span class="sr-only">Cart</span>
+                    </button>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+
+            <div class="product-container">
+                <div class="product-gallery animated delay-1">
+                    <div class="main-image" id="main-image-container">
+                        <div class="zoom-container" id="zoom-container">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpcyDOS8BNkJGXe94FD5XqnBce7BCk4ifkwv3notVF_BTSbDUVdTyCaz8YIb524f6jGrQ&usqp=CAU" alt="GIVA 925 Silver Turquoise Blue Tear Drop Earrings" id="main-product-image">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="product-info animated delay-2">
+                    <div>
+                        <h5 class="product-subtitle">Gift Details</h5>
+                        <h1 class="product-title">GIVA 925 Silver Turquoise Blue Tear Drop Earrings</h1>
+                    </div>
+
+                    <div class="product-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Material type</div>
+                            <div class="detail-value">Silver, Turquoise, Zircon</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Metal type</div>
+                            <div class="detail-value">Sterling Silver</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Gem type</div>
+                            <div class="detail-value">Zircon</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Country of Origin</div>
+                            <div class="detail-value">India</div>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
+                        <span class="current-price">$49.99</span>
+                        <span class="original-price">$65.00</span>
+                        <span class="discount">25% Off</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="#" class="btn" style="flex: 1; justify-content: center;">
+                            Add to Cart
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="btn pulse" style="flex: 1; justify-content: center; background-color: #15803d;">
+                            Buy Now
+                            <i data-lucide="credit-card" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <div class="action-card" id="saveGiftCard">
+                        <div class="action-icon">
+                            <i data-lucide="bookmark" class="w-6 h-6"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Save the gift</h3>
+                            <p class="action-description">For later buying, one can also save the gift.</p>
+                        </div>
+                        <div class="action-button">
+                            <button class="btn">
+                                Save gift
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Free Shipping</h3>
+                            <p class="action-description">Free shipping on all orders over $30.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Image gallery functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('main-product-image');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Update active state
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update main image with fade effect
+                    mainImage.style.opacity = 0;
+                    setTimeout(() => {
+                        mainImage.src = this.getAttribute('data-image');
+                        mainImage.style.opacity = 1;
+                    }, 300);
+                });
+            });
+
+            // Save gift functionality
+            const saveGiftCard = document.getElementById('saveGiftCard');
+            saveGiftCard.addEventListener('click', function() {
+                const saveBtn = this.querySelector('.btn');
+
+                // Change button text and icon
+                saveBtn.innerHTML = `
+                    Saved
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                `;
+
+                // Update icon
+                const actionIcon = this.querySelector('.action-icon i');
+                actionIcon.setAttribute('data-lucide', 'bookmark-check');
+
+                // Reinitialize icons
+                lucide.createIcons();
+
+                // Add success style
+                saveBtn.style.backgroundColor = '#15803d';
+
+                // Show toast notification
+                showToast('Item saved to your wishlist!');
+            });
+
+            // Image zoom functionality
+            const zoomContainer = document.getElementById('zoom-container');
+            const mainImageContainer = document.getElementById('main-image-container');
+
+            if (zoomContainer && mainImageContainer) {
+                mainImageContainer.addEventListener('mousemove', function(e) {
+                    const { left, top, width, height } = this.getBoundingClientRect();
+                    const x = (e.clientX - left) / width * 100;
+                    const y = (e.clientY - top) / height * 100;
+
+                    zoomContainer.style.transformOrigin = `${x}% ${y}%`;
+                    zoomContainer.style.transform = 'scale(1.5)';
+                });
+
+                mainImageContainer.addEventListener('mouseleave', function() {
+                    zoomContainer.style.transform = 'scale(1)';
+                });
+            }
+        });
+
+        // Toast notification
+        function showToast(message) {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background-color: #15803d; color: white; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; display: flex; align-items: center; gap: 0.5rem; min-width: 300px;">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <div>${message}</div>
+                </div>
+            `;
+
+            // Add to body
+            document.body.appendChild(toast);
+
+            // Initialize icon
+            lucide.createIcons();
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+
+        // Add animation to elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+            card.classList.add('animated');
+            card.style.opacity = '0';
+        });
+
+        // Add animation for visible elements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animated').forEach(el => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                }, 100);
+            });
+        });
+
+        // Add buy now functionality
+        document.querySelector('.pulse').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Show loading state
+            this.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+
+            // Simulate API call
+            setTimeout(() => {
+                showToast('Order placed successfully!');
+
+                // Reset button
+                setTimeout(() => {
+                    this.innerHTML = `
+                        Buy Now
+                        <i data-lucide="credit-card" class="w-4 h-4"></i>
+                    `;
+                    lucide.createIcons();
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

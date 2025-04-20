@@ -1,0 +1,52 @@
+2025-04-18 18:00:16,514 - INFO - Dataset loaded successfully.
+2025-04-18 18:00:16,542 - ERROR - Failed to initialize agent: This agent relies on access to a python repl tool which can execute arbitrary code. This can be dangerous and requires a specially sandboxed environment to be safely used. Please read the security notice in the doc-string of this function. You must opt-in to use this functionality by setting allow_dangerous_code=True.For general security guidelines, please see: https://python.langchain.com/docs/security/
+2025-04-18 18:01:03,822 - INFO - Dataset loaded successfully.
+2025-04-18 18:01:03,845 - ERROR - Failed to initialize agent: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+2025-04-18 18:01:33,771 - INFO - Dataset loaded successfully.
+2025-04-18 18:01:33,841 - INFO - Agent initialized successfully.
+2025-04-18 18:01:33,841 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:01:33,841 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:01:34,372 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-04-18 18:01:36,788 - ERROR - Error during agent execution: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-04-18 18:02:27,659 - INFO - Dataset loaded successfully.
+2025-04-18 18:02:27,718 - INFO - Agent initialized successfully.
+2025-04-18 18:02:27,718 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:02:27,718 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:02:29,477 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-04-18 18:02:31,880 - ERROR - Error during agent execution: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-04-18 18:03:33,347 - INFO - Dataset loaded successfully.
+2025-04-18 18:03:33,383 - INFO - Agent initialized successfully.
+2025-04-18 18:03:33,383 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:03:33,383 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:03:35,135 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-04-18 18:03:37,538 - ERROR - Agent failed: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-04-18 18:06:43,916 - INFO - Dataset loaded successfully.
+2025-04-18 18:06:46,370 - INFO - Agent initialized successfully.
+2025-04-18 18:06:46,370 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:06:46,370 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:06:47,507 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:06:47,507 - INFO - Retrying request to /completions in 0.395100 seconds
+2025-04-18 18:06:48,549 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:06:48,554 - INFO - Retrying request to /completions in 0.806439 seconds
+2025-04-18 18:06:50,021 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:06:50,025 - ERROR - Error during agent execution: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-04-18 18:07:41,097 - INFO - Dataset loaded successfully.
+2025-04-18 18:07:43,038 - INFO - Agent initialized successfully.
+2025-04-18 18:07:43,038 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:07:43,039 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:07:43,914 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:07:43,914 - INFO - Retrying request to /completions in 0.423746 seconds
+2025-04-18 18:07:45,111 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:07:45,124 - INFO - Retrying request to /completions in 0.972877 seconds
+2025-04-18 18:07:46,423 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:07:46,423 - ERROR - Error during agent execution: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-04-18 18:10:07,226 - INFO - Dataset loaded successfully.
+2025-04-18 18:10:08,263 - INFO - Agent initialized successfully.
+2025-04-18 18:10:08,263 - INFO - Received query: What is the best Gaming Controller?
+2025-04-18 18:10:08,263 - INFO - Cleaned query: What is the best Gaming Controller
+2025-04-18 18:10:08,702 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:10:08,702 - INFO - Retrying request to /completions in 0.436549 seconds
+2025-04-18 18:10:09,672 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:10:09,672 - INFO - Retrying request to /completions in 0.851897 seconds
+2025-04-18 18:10:10,841 - INFO - HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-18 18:10:10,841 - ERROR - Error during agent execution: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}

@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taufa - Find Perfect Gifts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #635bff;
+            --primary-light: #867cff;
+            --primary-dark: #4b44c5;
+            --secondary: #f3f4f6;
+            --accent: #22c55e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+            scroll-behavior: smooth;
+            background-color: #F0EFFA
+
+        }
+
+        body.dark-mode {
+            background-color: #F0EFFA;
+            color: #f3f4f6;
+        }
+
+        .active-nav {
+            color: var(--primary);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .active-nav::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .main-container {
+            padding-top: 2rem;
+            min-height: calc(100vh - 4rem);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            .content {
+                grid-template-columns: 1fr 1fr;
+            }
+            .right-section {
+                grid-column: span 2;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            .left-section, .right-section {
+                grid-column: span 1;
+            }
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .feature-grid {
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        .feature {
+            aspect-ratio: 1;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .feature {
+            background: linear-gradient(135deg, #2d2d2d, #3d3d3d);
+        }
+
+        .feature.active {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(99, 91, 255, 0.2);
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            top: -25%;
+            left: -25%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature:hover::before {
+            opacity: 0.5;
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(0%, 0%) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .signup-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.5s ease;
+        }
+
+        body.dark-mode .signup-card {
+            background: #1e1e1e;
+        }
+
+        .signup-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .input-group input {
+            background: #2d2d2d;
+            border-color: #3d3d3d;
+            color: #f3f4f6;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.2);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(99, 91, 255, 0.3);
+        }
+
+        .btn.secondary {
+            background: var(--secondary);
+            color: #4b5563;
+        }
+
+        body.dark-mode .btn.secondary {
+            background: #2d2d2d;
+            color: #d1d5db;
+        }
+
+        .btn.secondary:hover {
+            background: #e5e7eb;
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .btn.secondary:hover {
+            background: #3d3d3d;
+        }
+
+        .progress-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        body.dark-mode .progress-track {
+            background: #1e1e1e;
+        }
+
+        .progress-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .point {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #6b7280;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .point {
+            background: #3d3d3d;
+            color: #d1d5db;
+        }
+
+        .progress-point.active .point {
+            background: var(--primary);
+            color: white;
+        }
+
+        .check {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .progress-point.completed .check {
+            transform: scale(1);
+        }
+
+        .progress-point.completed .point {
+            opacity: 0;
+        }
+
+        .progress-label {
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        body.dark-mode .progress-label {
+            color: #d1d5db;
+        }
+
+        .progress-point.active .progress-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .progress-line {
+            flex: 1;
+            height: 2px;
+            background: #e5e7eb;
+            position: relative;
+        }
+
+        body.dark-mode .progress-line {
+            background: #3d3d3d;
+        }
+
+        .progress-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .progress-line.half::before {
+            width: 50%;
+        }
+
+        .progress-line.full::before {
+            width: 100%;
+        }
+
+        .social-proof {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        body.dark-mode .social-proof {
+            background: #1e1e1e;
+        }
+
+        .testimonial {
+            font-style: italic;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .testimonial::before, .testimonial::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .user-avatar {
+            width: 3rem;
+            height: 3rem;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body.dark-mode .user-avatar {
+            background: #3d3d3d;
+        }
+
+        .user-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .user-info p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        body.dark-mode .user-info p {
+            color: #d1d5db;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        body.dark-mode .trust-badge {
+            color: #d1d5db;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            min-width: 12rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        body.dark-mode .dropdown-content {
+            background: #1e1e1e;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4b5563;
+            transition: all 0.2s ease;
+        }
+
+        body.dark-mode .dropdown-content a {
+            color: #d1d5db;
+        }
+
+        .dropdown-content a:hover {
+            background: #f3f4f6;
+            color: var(--primary);
+        }
+
+        body.dark-mode .dropdown-content a:hover {
+            background: #2d2d2d;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            width: 12rem;
+        }
+
+        body.dark-mode .search-input {
+            background: #2d2d2d;
+            border-color: #3d3d3d;
+            color: #f3f4f6;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.2);
+            width: 15rem;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .theme-toggle {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: #f3f4f6;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #2d2d2d;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: white;
+            padding: 2rem 1rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        body.dark-mode .mobile-menu-content {
+            background: #1e1e1e;
+        }
+
+        .mobile-menu.active .mobile-menu-content {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu-list a {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.2s ease;
+        }
+
+        body.dark-mode .mobile-menu-list a {
+            color: #d1d5db;
+        }
+
+        .mobile-menu-list a:hover {
+            background: #f3f4f6;
+        }
+
+        body.dark-mode .mobile-menu-list a:hover {
+            background: #2d2d2d;
+        }
+
+        .mobile-menu-list a.active {
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(99, 91, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <!-- Navbar -->
+<nav class="flex items-center justify-between px-6 py-4 bg-white shadow-sm fixed w-full top-0 z-10">
+    <div class="flex items-center gap-3">
+        <i data-lucide="gift" class="w-8 h-8 text-[#635bff]"></i>
+        <span class="text-2xl font-semibold text-[#635bff]">Taufa</span>
+    </div>
+    <ul class="hidden md:flex flex-wrap justify-center lg:justify-start space-x-8 font-medium text-gray-700">
+        <li><a href="index.html" class="hover:text-black transition">Home</a></li>
+        <li><a href="personalisation.html" class="hover:text-black transition">Personalisation</a></li>
+        <li class="dropdown">
+            <a href="recommended.html" class="hover:text-black transition flex items-center gap-1">
+                Gift Details
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </a>
+        </li>
+        <li><a href="login.html" class="active-nav">User Profile</a></li>
+    </ul>
+
+    <div class="flex items-center gap-4">
+        <div class="search-container hidden md:block">
+            <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+            <input type="text" placeholder="Search gifts..." class="search-input">
+        </div>
+
+        <div class="theme-toggle" id="themeToggle">
+            <i data-lucide="moon" class="w-5 h-5 dark-icon"></i>
+            <i data-lucide="sun" class="w-5 h-5 light-icon hidden"></i>
+        </div>
+
+        <button class="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" id="mobileSearchBtn">
+            <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+
+        <button class="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" id="mobileMenuBtn">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+    </div>
+</nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="mobile-menu-list">
+                <a href="index.html">Home</a>
+                <a href="personalisation.html">Personalisation</a>
+                <a href="recommended.html">Gift Details</a>
+                <a href="login.html" class="active">User Profile</a>
+
+                <div class="mt-4">
+                    <div class="search-container w-full mb-4">
+                        <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+                        <input type="text" placeholder="Search gifts..." class="search-input w-full">
+                    </div>
+
+                    <div class="flex items-center gap-2 px-3 py-2">
+                        <span class="text-sm font-medium">Dark Mode</span>
+                        <button class="theme-toggle ml-auto" id="mobileThemeToggle">
+                            <i data-lucide="moon" class="w-5 h-5 dark-icon"></i>
+                            <i data-lucide="sun" class="w-5 h-5 light-icon hidden"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container mt-16">
+        <div class="container">
+            <header class="header">
+                <div class="badge inline-flex items-center gap-2 px-4 py-2 bg-[#635bff] text-white rounded-full font-medium mb-6 animate-pulse" id="badgeAnimation">
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </div>
+                <h1>Ready to join our community?</h1>
+                <p class="subtitle">Connect with amazing people and find perfect gifts today!</p>
+
+            </header>
+
+            <main class="content">
+                <div class="left-section">
+                    <div class="feature-grid">
+                        <div class="feature active" data-tooltip="Personalized Gifts">
+                            <i data-lucide="gift" class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature">
+                            <i data-lucide="heart" class="w-6 h-6 text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature active">
+                            <i data-lucide="cake" class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature active">
+                            <i data-lucide="calendar" class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature active">
+                            <i data-lucide="party-popper" class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature">
+                            <i data-lucide="rocket" class="w-6 h-6 text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature active">
+                            <i data-lucide="package" class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                        <div class="feature">
+                            <i data-lucide="star" class="w-6 h-6 text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                        </div>
+                    </div>
+
+                    <div class="social-proof mt-6">
+                        <div class="testimonial">
+                            "Taufa helped me find the perfect birthday gift for my friend. The personalization options are amazing!"
+                        </div>
+
+                        <div class="user-info">
+                            <h4>Khyati</h4>
+
+                        </div>
+                        <div class="trust-badge">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-[#635bff]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signup-section">
+                    <div class="signup-card animate-fadeInUp">
+                        <h2>Create Account</h2>
+                        <form id="signupForm">
+                            <div class="input-group">
+                                <input type="text" id="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" id="password" placeholder="Create Password" required>
+                            </div>
+                            <button type="submit" class="btn primary">
+                                Get Started
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                            <button type="button" class="btn secondary">
+                                Sign In Instead
+                                <i data-lucide="log-in" class="w-4 h-4"></i>
+                            </button>
+
+                            <div class="flex items-center my-4">
+                                <div class="flex-1 h-px bg-gray-200"></div>
+                                <span class="px-3 text-sm text-gray-500">or continue with</span>
+                                <div class="flex-1 h-px bg-gray-200"></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" class="btn secondary flex items-center justify-center">
+                                    <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                                    Google
+                                </button>
+                                <button type="button" class="btn secondary flex items-center justify-center">
+                                    <i data-lucide="facebook" class="w-5 h-5 mr-2"></i>
+                                    Facebook
+                                </button>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <p class="text-xs text-gray-500">
+                                    By signing up, you agree to our
+                                    <a href="#" class="text-[#635bff] hover:underline">Terms of Service</a> and
+                                    <a href="#" class="text-[#635bff] hover:underline">Privacy Policy</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <div class="progress-track">
+                        <div class="progress-point active">
+                            <div class="point">1</div>
+                            <div class="check">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <div class="progress-label">Sign Up</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-point">
+                            <div class="point">2</div>
+                            <div class="check">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <div class="progress-label">Profile</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-point">
+                            <div class="point">3</div>
+                            <div class="check">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <div class="progress-label">Connect</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 mt-6">
+                        <div class="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
+                            <div class="p-2 bg-[#635bff]/10 rounded-full">
+                                <i data-lucide="shield" class="w-6 h-6 text-[#635bff]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Secure Sign Up</h4>
+                                <p class="text-sm text-gray-500">Your data is protected with industry-standard encryption</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
+                            <div class="p-2 bg-[#635bff]/10 rounded-full">
+                                <i data-lucide="zap" class="w-6 h-6 text-[#635bff]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Quick Setup</h4>
+                                <p class="text-sm text-gray-500">Get started in less than 2 minutes</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
+                            <div class="p-2 bg-[#635bff]/10 rounded-full">
+                                <i data-lucide="users" class="w-6 h-6 text-[#635bff]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Join Community</h4>
+                                <p class="text-sm text-gray-500">Connect with other gift enthusiasts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="py-8 border-t border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="gift" class="w-6 h-6 text-[#635bff]"></i>
+                            <span class="text-xl font-semibold text-[#635bff]">Taufa</span>
+
+                        </div>
+                        <p class="text-sm text-gray-500 mb-4">Find perfect gifts for every occasion. Personalized recommendations and unique gift ideas.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-gray-500 hover:text-[#635bff] transition">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-[#635bff] transition">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-[#635bff] transition">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-[#635bff] transition">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium mb-4">Quick Links</h4>
+                        <ul class="flex flex-col gap-2">
+                            <li><a href="index.html" class="text-sm text-gray-500 hover:text-[#635bff] transition">Home</a></li>
+                            <li><a href="personalistion.html" class="text-sm text-gray-500 hover:text-[#635bff] transition">Features</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Gift Ideas</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium mb-4">Support</h4>
+                        <ul class="flex flex-col gap-2">
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Help Center</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">FAQ</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-sm text-gray-500 hover:text-[#635bff] transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium mb-4">Subscribe</h4>
+                        <p class="text-sm text-gray-500 mb-4">Get the latest gift ideas and promotions</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your Email" class="px-3 py-2 border border-gray-300 rounded-l-lg text-sm focus:outline-none focus:border-[#635bff] flex-1">
+                            <button class="bg-[#635bff] text-white px-3 py-2 rounded-r-lg text-sm">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200 flex flex-col md:flex-row md:justify-between gap-4">
+                    <p class="text-sm text-gray-500">© 2025 Taufa. All rights reserved.</p>
+
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const darkIcon = document.querySelector('.dark-icon');
+        const lightIcon = document.querySelector('.light-icon');
+        const mobileDarkIcon = mobileThemeToggle.querySelector('.dark-icon');
+        const mobileLightIcon = mobileThemeToggle.querySelector('.light-icon');
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+            mobileDarkIcon.classList.toggle('hidden');
+            mobileLightIcon.classList.toggle('hidden');
+
+            // Store user preference
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('darkMode');
+        if (savedTheme === 'true') {
+            document.body.classList.add('dark-mode');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+            mobileDarkIcon.classList.add('hidden');
+            mobileLightIcon.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Form validation
+        const signupForm = document.getElementById('signupForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const nameInput = document.getElementById('name');
+
+        function validateEmail() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(emailInput.value);
+        }
+
+        function validatePassword() {
+            return passwordInput.value.length >= 8;
+        }
+
+        function validateName() {
+            return nameInput.value.trim().length > 0;
+        }
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            if (!validateName()) {
+                nameInput.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                nameInput.style.borderColor = '#10b981';
+            }
+
+            if (!validateEmail()) {
+                emailInput.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                emailInput.style.borderColor = '#10b981';
+            }
+
+            if (!validatePassword()) {
+                passwordInput.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                passwordInput.style.borderColor = '#10b981';
+            }
+
+            if (isValid) {
+                // Show success animation
+                const signupCard = document.querySelector('.signup-card');
+                signupCard.style.background = '#22c55e';
+                signupCard.style.color = 'white';
+                signupCard.innerHTML = `
+                    <div class="flex flex-col items-center justify-center text-center py-8">
+                        <i data-lucide="check-circle" class="w-16 h-16 mb-4 text-white"></i>
+                        <h2 class="text-2xl font-bold mb-2">Success!</h2>
+                        <p class="mb-6">Check your email to complete registration</p>
+                        <button class="btn bg-white text-[#22c55e] font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition">
+                            Return to Home
+                        </button>
+                    </div>
+                `;
+                lucide.createIcons();
+
+                // Update progress
+                document.querySelector('.progress-point.active').classList.add('completed');
+                document.querySelector('.progress-line').classList.add('half');
+                setTimeout(() => {
+                    document.querySelectorAll('.progress-point')[1].classList.add('active');
+                }, 500);
+            }
+        });
+
+        // Input focus effects
+        [nameInput, emailInput, passwordInput].forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#635bff';
+                this.style.boxShadow = '0 0 0 3px rgba(99, 91, 255, 0.2)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.boxShadow = '';
+                if (this.value) {
+                    if (this === emailInput && !validateEmail()) {
+                        this.style.borderColor = '#ef4444';
+                    } else if (this === passwordInput && !validatePassword()) {
+                        this.style.borderColor = '#ef4444';
+                    } else {
+                        this.style.borderColor = '#10b981';
+                    }
+                } else {
+                    this.style.borderColor = '#e5e7eb';
+                }
+            });
+        });
+
+        // Start Now button animation
+        document.getElementById('startNowBtn').addEventListener('click', function() {
+            document.querySelector('.signup-card').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            // Add focus animation
+            setTimeout(() => {
+                nameInput.focus();
+            }, 800);
+        });
+
+        // Feature grid animation
+        const features = document.querySelectorAll('.feature');
+        features.forEach((feature, index) => {
+            setTimeout(() => {
+                feature.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    feature.style.transform = 'scale(1)';
+                }, 300);
+            }, index * 100);
+        });
+
+        // Tooltip functionality for features
+        features.forEach(feature => {
+            if (feature.dataset.tooltip) {
+                feature.addEventListener('mouseenter', function() {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap';
+                    tooltip.innerHTML = this.dataset.tooltip;
+                    this.appendChild(tooltip);
+                });
+
+                feature.addEventListener('mouseleave', function() {
+                    const tooltip = this.querySelector('.absolute');
+                    if (tooltip) {
+                        tooltip.remove();
+                    }
+                });
+            }
+        });
+
+        // Badge animation
+        const badge = document.getElementById('badgeAnimation');
+        setInterval(function() {
+            badge.classList.add('animate-pulse');
+            setTimeout(function() {
+                badge.classList.remove('animate-pulse');
+            }, 2000);
+        }, 5000);
+
+        // Delay load animations
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelector('.signup-card').classList.add('animate-fadeInUp');
+            }, 300);
+        });
+    </script>
+</body>
+</html>

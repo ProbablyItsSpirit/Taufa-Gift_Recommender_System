@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taufa Gift Recommendation - Personalisation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #635bff;
+      --primary-dark: #5147fc;
+      --primary-light: #8f89ff;
+      --accent-coral: #FF6B6B;
+      --accent-teal: #4ECDC4;
+      --accent-amber: #FFD166;
+      --gradient-bg: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    }
+
+    .btn-primary {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(99, 91, 255, 0.25);
+      background: var(--gradient-bg);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 91, 255, 0.35);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-container {
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .search-container {
+      position: relative;
+      margin-left: auto;
+    }
+
+    .search-input {
+      padding: 8px 16px;
+      padding-right: 40px;
+      border: 1px solid #e2e8f0;
+      border-radius: 9999px;
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(99, 91, 255, 0.1);
+    }
+
+    .form-container {
+      border-top: 4px solid var(--accent-teal);
+    }
+
+    .textarea-wrapper {
+      position: relative;
+    }
+
+    .textarea-icon {
+      position: absolute;
+      bottom: 35px;
+      right: 15px;
+      color: #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .textarea-input:focus + .textarea-icon {
+      color: var(--primary);
+    }
+
+    .input-pill {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(99, 91, 255, 0.1);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .input-pill:hover {
+      background: rgba(99, 91, 255, 0.2);
+    }
+
+    .input-pill-active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(99, 91, 255, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(99, 91, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(99, 91, 255, 0);
+      }
+    }
+
+    .accent-text {
+      color: var(--primary);
+    }
+
+    .illustration-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .illustration-container::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      z-index: 0;
+    }
+
+    .illustration-container::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 50%;
+      bottom: -30px;
+      left: -30px;
+      z-index: 0;
+    }
+
+    .illustration-image {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#F0EFFA] text-[#0f172a] font-sans scroll-smooth pt-20">
+  <!-- Navbar -->
+  <nav class="fixed w-full top-0 z-50 nav-container shadow-sm px-6 py-4">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <i data-lucide="gift" class="w-8 h-8 text-[#635bff]"></i>
+        <span class="text-2xl font-semibold text-[#635bff]">Taufa</span>
+      </div>
+
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <li><a href="index.html" class="nav-link hover:text-[#635bff] transition">Home</a></li>
+        <li><a href="personalisation.html" class="nav-link text-[#635bff] font-semibold">Personalisation</a></li>
+        <li><a href="#" class="nav-link hover:text-[#635bff] transition">Gift Details</a></li>
+        <li><a href="login.html" class="nav-link hover:text-[#635bff] transition">User Profile</a></li>
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <div class="search-container hidden md:block">
+          <input type="text" placeholder="Search gifts..." class="search-input">
+          <i data-lucide="search" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+        </div>
+
+        <button class="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-4 py-8">
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden form-container">
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-1/2 p-8 md:p-10">
+          <div class="mb-8">
+
+            <h2 class="text-3xl font-bold mb-3">Tell us about them</h2>
+            <p class="text-gray-600">Share details about the person you're shopping for to get personalized gift recommendations.</p>
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-2">Occasion</label>
+            <div class="flex flex-wrap">
+              <div class="input-pill input-pill-active">
+                <i data-lucide="cake" class="w-4 h-4 mr-1"></i>
+                Birthday
+              </div>
+              <div class="input-pill">
+                <i data-lucide="heart" class="w-4 h-4 mr-1"></i>
+                Anniversary
+              </div>
+              <div class="input-pill">
+                <i data-lucide="gift" class="w-4 h-4 mr-1"></i>
+                Christmas
+              </div>
+              <div class="input-pill">
+                <i data-lucide="champagne" class="w-4 h-4 mr-1"></i>
+                Other
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-2">Budget Range</label>
+            <div class="flex flex-wrap">
+              <div class="input-pill">₹100-₹1000</div>
+              <div class="input-pill input-pill-active">₹1000-₹5000</div>
+              <div class="input-pill">₹5000-₹10000</div>
+              <div class="input-pill">₹10000+</div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="description" class="block text-gray-700 text-sm font-medium mb-2">Tell us more details</label>
+            <div class="textarea-wrapper">
+              <textarea
+                id="description"
+                class="textarea-input block w-full px-4 py-3 text-gray-700 bg-white border border-gray-200 rounded-lg focus:border-[#635bff] focus:ring focus:ring-opacity-40 focus:ring-[#635bff] focus:outline-none"
+                rows="4"
+                placeholder="Describe their interests, hobbies, age, personality..."></textarea>
+              <i data-lucide="message-square" class="textarea-icon w-5 h-5"></i>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Be specific for better recommendations!</p>
+          </div>
+
+          <a href="recommended.html">
+            <button class="btn-primary text-white font-medium px-6 py-3 rounded-full hover:shadow-lg flex items-center gap-2 pulse-animation">
+              Recommend Now
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </a>
+
+        </div>
+
+        <div class="w-full md:w-1/2 bg-[#f9f9ff] p-8 flex items-center justify-center illustration-container">
+          <div class="relative">
+            <div class="absolute -top-10 -left-10 w-20 h-20 bg-[rgba(255,209,102,0.2)] rounded-full"></div>
+            <img
+              src="https://img.freepik.com/premium-vector/businessman-with-smartphone-online-business-concept-flat-character-illustration_648489-309.jpg"
+              alt="Gift Personalization Illustration"
+              class="illustration-image max-w-sm mx-auto"
+            />
+            <div class="bg-white p-4 rounded-lg shadow-md absolute bottom-10 right-0 max-w-[240px]">
+              <div class="flex items-start gap-3">
+                <div class="bg-[#635bff] rounded-full p-2 text-white">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-sm mb-1">Smart recommendations</h4>
+                  <p class="text-gray-500 text-xs">Our AI helps find perfect gifts based on your description</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="bg-gray-100 h-2 w-full">
+        <div class="bg-[#635bff] h-full w-1/3 rounded-r-full"></div>
+      </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="mt-8 bg-white rounded-xl p-6 shadow-md">
+      <h3 class="font-semibold text-lg mb-4 flex items-center">
+        <i data-lucide="lightbulb" class="w-5 h-5 mr-2 text-[#FFD166]"></i>
+        Tips for better recommendations
+      </h3>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div class="flex items-start gap-3">
+          <div class="text-[#4ECDC4] mt-1">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+          </div>
+          <p>Include their interests, hobbies, and what they're passionate about</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="text-[#4ECDC4] mt-1">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+          </div>
+          <p>Mention their age group and relationship to you</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="text-[#4ECDC4] mt-1">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+          </div>
+          <p>Share any recent life events or achievements worth celebrating</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Add click functionality to the pills
+    document.querySelectorAll('.input-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        // In each group, deactivate siblings and activate this one
+        const parent = this.parentElement;
+        parent.querySelectorAll('.input-pill').forEach(sibling => {
+          sibling.classList.remove('input-pill-active');
+        });
+        this.classList.add('input-pill-active');
+      });
+    });
+  </script>
+</body>
+</html>

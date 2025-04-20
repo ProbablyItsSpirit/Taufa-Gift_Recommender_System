@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taufa - Gift Recommender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #635bff;
+      --primary-dark: #5147fc;
+      --primary-light: #8f89ff;
+      --accent-coral: #FF6B6B;
+      --accent-teal: #4ECDC4;
+      --accent-amber: #FFD166;
+      --gradient-bg: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    }
+
+    .btn-primary {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(99, 91, 255, 0.25);
+      background: var(--gradient-bg);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 91, 255, 0.35);
+    }
+
+    .search-container {
+      position: relative;
+      margin-left: auto;
+    }
+    .search-input {
+      padding: 8px 16px;
+      padding-right: 40px;
+      border: 1px solid #e2e8f0;
+      border-radius: 9999px;
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(99, 91, 255, 0.1);
+    }
+
+    .feature-card-1 {
+      border-top: 4px solid var(--accent-coral);
+    }
+    .feature-card-2 {
+      border-top: 4px solid var(--accent-teal);
+    }
+    .feature-card-3 {
+      border-top: 4px solid var(--accent-amber);
+    }
+
+    .hero-badge {
+      background-color: rgba(99, 91, 255, 0.1);
+      color: var(--primary);
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(99, 91, 255, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(99, 91, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(99, 91, 255, 0);
+      }
+    }
+
+    .accent-highlight {
+      position: relative;
+    }
+    .accent-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: var(--accent-amber);
+      opacity: 0.3;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="bg-[#F0EFFA] text-[#0f172a] font-sans scroll-smooth">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
+    <div class="flex items-center gap-3">
+      <i data-lucide="gift" class="w-8 h-8 text-[#635bff]"></i>
+      <span class="text-2xl font-semibold text-[#635bff]">Taufa</span>
+    </div>
+    <ul class="flex flex-wrap justify-center lg:justify-start space-x-8 font-medium text-gray-700 mt-4 lg:mt-0">
+      <li><a href="index.html" class="hover:text-[#635bff] transition">Home</a></li>
+      <li><a href="personalisation.html" class="hover:text-[#635bff] transition">Personalisation</a></li>
+      <li><a href="recommended.html" class="hover:text-[#635bff] transition">Gift Details</a></li>
+      <li><a href="login.html" class="hover:text-[#635bff] transition">User Profile</a></li>
+
+    </ul>
+
+    <div class="flex items-center gap-4">
+      <div class="search-container hidden md:block">
+        <input type="text" placeholder="Search gifts..." class="search-input">
+        <i data-lucide="search" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+      </div>
+
+      <button class="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </button>
+      <button onclick="startNow()" class="btn-primary text-white px-6 py-2.5 rounded-full flex items-center gap-2">
+        <a href="personalisation.html" class="text-white">
+           Start now
+        </a>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col-reverse lg:flex-row justify-between items-center px-6 lg:px-24 py-16">
+    <!-- Left Text Content -->
+    <div class="max-w-xl space-y-6 text-center lg:text-left">
+      <p class="hero-badge inline-block px-4 py-2 rounded-full font-semibold tracking-wide text-sm"> Solutions for finding ideal gifts!</p>
+      <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+        Taufa – your <span class="accent-highlight">personalised</span><br />gift recommender
+      </h1>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Confused what to gift your loved ones? Taufa's got you covered — smart, thoughtful, and just right.
+      </p>
+      <a href="personalisation.html" class="btn-primary text-white px-8 py-3.5 rounded-full text-lg flex items-center justify-center gap-2 max-w-xs pulse-animation">
+        Get Started
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+
+      <!-- User Avatars + Trust Badge -->
+      <div class="flex items-center space-x-3 pt-6">
+        <div class="flex -space-x-3">
+          <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User 1" />
+          <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://randomuser.me/api/portraits/women/2.jpg" alt="User 2" />
+          <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://randomuser.me/api/portraits/women/3.jpg" alt="User 3" />
+          <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User 4" />
+        </div>
+        <span class="text-sm font-medium bg-white px-3 py-1 rounded-full shadow-sm text-gray-700 ml-2">+1000 happy users</span>
+      </div>
+    </div>
+
+    <!-- Right Image/Illustration -->
+    <div class="mb-12 lg:mb-0">
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <img
+          src="https://miro.medium.com/v2/resize:fit:1400/1*F92HvYD6zyBNmVBHnjvIPg.png"
+          alt="Gift Boxes"
+          class="w-[300px] lg:w-[400px] h-auto object-contain rounded-xl shadow-sm transition-transform hover:scale-105"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- How Taufa Works Section -->
+  <section class="bg-white px-10 lg:px-24 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">How Taufa Works</h2>
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+      <!-- Step 1 -->
+      <div class="p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 bg-[#f5f7fa] feature-card-1">
+        <div class="mb-4 flex justify-center">
+          <i data-lucide="plus" class="h-10 w-10 text-[#FF6B6B]"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Tell Us About Them</h3>
+        <p class="text-gray-600">Share their interests, age, and relationship. We take care of the rest.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 bg-[#f5f7fa] feature-card-2">
+        <div class="mb-4 flex justify-center">
+          <i data-lucide="package" class="h-10 w-10 text-[#4ECDC4]"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Get Matched</h3>
+        <p class="text-gray-600">Our AI recommends the best gift options tailored just for them.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 bg-[#f5f7fa] feature-card-3">
+        <div class="mb-4 flex justify-center">
+          <i data-lucide="gift" class="h-10 w-10 text-[#FFD166]"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Make Someone Smile</h3>
+        <p class="text-gray-600">Order the gift or keep it as a surprise idea. Either way, you're winning!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#e0defb] text-black px-6 lg:px-24 py-10">
+    <div class="grid md:grid-cols-3 gap-10 text-center md:text-left">
+      <!-- Taufa Logo and Tagline -->
+      <div>
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+          <i data-lucide="gift" class="w-6 h-6 text-[#635bff]"></i>
+          <span class="text-xl font-bold text-[#635bff]">Taufa</span>
+        </div>
+        <p class="text-sm text-gray-600">Helping you make memories with the perfect gift – every time.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-[#635bff] transition">Home</a></li>
+          <li><a href="#" class="hover:text-[#635bff] transition">Personalisation</a></li>
+          <li><a href="#" class="hover:text-[#635bff] transition">Gift Details</a></li>
+          <li><a href="#" class="hover:text-[#635bff] transition">User Profile</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter / Contact -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Stay in the loop</h3>
+        <p class="text-sm text-gray-600 mb-4">Get updates about new features & gifting ideas.</p>
+        <form class="flex items-center gap-2">
+          <input type="email" placeholder="Your email" class="px-4 py-2 rounded-full text-black focus:outline-none focus:ring-2 focus:ring-[#635bff] focus:border-transparent w-full md:w-auto">
+          <button type="submit" class="bg-[#635bff] text-white font-medium px-4 py-2 rounded-full hover:bg-[#5147fc] transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom line -->
+    <div class="mt-10 border-t border-black/10 pt-6 text-sm text-center text-gray-600">
+      © 2025 Taufa. Made with efforts for thoughtful gifting.
+    </div>
+  </footer>
+
+  <script>
+    function startNow() {
+      alert("Redirecting you to the personalised gift experience!");
+    }
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
